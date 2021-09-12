@@ -87,52 +87,23 @@ main {
 	max-width: 1400px;
 	margin: 0 auto;
 	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: 25% 50% 25%;
 }
 
-@media screen and (min-width: 480px) {
-
-	main {
-		grid-template-rows: auto;
-		grid-template-columns: 25% 50% 25%;
-	}
-
-	.new-videos {
-		grid-column: 1/2;
-		grid-row: 1/2;
-	}
-
-	main article {
-		grid-column: 2/3;
-		grid-row: 1/2;
-	}
-
-	.new-posts {
-		grid-column: 3/4;
-		grid-row: 1/2;
-	}
-
+.new-videos {
+	grid-column: 1/2;
+	grid-row: 1/2;
 }
 
-@media screen and (min-width: 20px) {
-	main {
-		display: grid;
-		grid-template-rows: auto auto auto;
-		grid-template-columns: 100%;
-	}
-	.new-videos {
-		grid-column: 1/2;
-		grid-row: 3/4;
-	}
+main article {
+	grid-column: 2/3;
+	grid-row: 1/2;
+}
 
-	main article {
-		grid-column: 1/2;
-		grid-row: 1/2;
-	}
-
-	.new-posts {
-		grid-column: 1/2;
-		grid-row: 2/3;
-	}
+.new-posts {
+	grid-column: 3/4;
+	grid-row: 1/2;
 }
 
 p {
