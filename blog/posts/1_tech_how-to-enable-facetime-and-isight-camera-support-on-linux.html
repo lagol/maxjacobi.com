@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>1_tech_how-to-enable-facetime-and-isight-camera-support-on-linux.html</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<body>
+<h1 id="name">How to enable Facetime and iSight Camera support on Linux</h1>
+<h3>The problem</h3>
+                    <p>
+                        Everyone knows of this problem. You just installed Linux on your new/old MacBook/iMac. Then you want to start, let's say a video conference and boom: Skype or whatever you're using says &quot;No device found&quot;. To fix this issue, I found <a href="https://askubuntu.com/questions/990218/camera-not-working-on-macbook-pro">this solution on StackExchange/AskUbuntu</a>. It didn't work completely fine for me, but I found <a href="https://askubuntu.com/questions/1231340/trying-to-install-isight-webcam-following-instructions-but-module-bcd-pci-not?noredirect=1&lq=1">another post on StackExchange/AskUbuntu</a> which helped me out with the last problems. In this blogpost, I want to share my compared solution to enable Facetime/iSight Camera Support on Linux. 
+                    </p>
+                    <p>
+                        I used the instructions from the StackExchange posts above on Linux Mint 20.1 Cinnamon, on an early 2015 MacBook Pro &quot13. As Linux Mint is based on Ubuntu, and the instructions I followed actually were asked by an Ubuntu user, I suppose that these instructions will also work on Ubuntu. I didn't test this on other Linux distros.
+                    </p>
+                    <h3>The solution</h3>
+                    <p>
+                        Copy the below code line by line into a terminal. How you do that is completely up to you, but make sure you copy it exactly as it's written below.
+                    </p>
+                    <code>
+                        <pre>
+sudo apt get install git
+sudo apt-get install curl xzcat cpio
+git clone https://github.com/patjak/facetimehd-firmware.git
+cd facetimehd-firmware
+make
+sudo make install
+cd ..
+sudo apt-get install kmod libssl-dev checkinstall
+git clone https://github.com/patjak/bcwc_pcie.git
+cd bcwc_pcie
+make
+sudo make install
+sudo depmod
+sudo modprobe -r bdc_pci
+sudo modprobe facetimehd
+sudo nano /etc/modules</pre>
+                    </code>
+                    <p>
+                        Within the file we opened in the last line from above, add &quot;facetimehd&quot; right at the end in a new line. Write out (&lt;CTRL&gt; + &lt;O&gt;), accept the filename (&lt;ENTER&gt;) and close (&lt;CTRL&gt; + &lt;X&gt;).
+                    </p>
+                    <p>
+                        All that didn't perfectly work for me. Firstly, in line 2, I couldn't install the package &quot;xzcat&quot; because it wasn't found. A comment said that I had to install &quot;xz-utils&quot; instead of &quot;xzcat&quot;, but this packaget was already installed, so that's it. Secondly, I wasn't able to run line 14, because &quot;module bdc_pci wasn't found&quot;. With the help of another StackExchange/AskUbuntu post, I was able to find a solution for this, too. Install the following package:
+                    </p>
+                    <code><pre>
+sudo apt-get install isight-firmware-tools</pre>
+                    </code>
+                    <p>
+                        During the course of the installation process, you will be asked for a firmware file. You can download such a file <a href="https://www.linux.org/attachments/appleusbvideosupport-zip.4683/">here</a>. Extract the downloaded zip archive and copy the included file to a spot you find it again. Then enter the path to that file where you were asked for it. When the installation successfully finished, you're ready to go.
+                    </p>
+                    <p>
+                        Just try out your camera right now. Even a reboot isn't required. For example open &quot;Cheese&quot;, and boom: iSight/Facetimehd!
+                    </p>
+                    <p> I hope these instructions will have worked for you. If you have have any questions, ideas what I could do better, please let me know. You can contact me on Twitter at <a href="https://www.twitter.com/xamsoftware">@xamsoftware</a> and on Instagram at <a href="https://www.instagram.com/xam_software">@xam_software</a> via Direct Message.
+                    </p>
+</body>
+</html>

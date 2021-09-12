@@ -155,10 +155,15 @@ footer a, footer a:visited, footer a:active, footer a:hover {
 }
 
 footer small {
-	grid-column: 3/5;
+	grid-column: 1/7;
 	grid-row: 2/3;
 }
 
 hr {
 	border: 1px solid #1E6091;
+}
+
+.post {
+	width: 100%;
+	height: calc(100vh - 215px);
 }
