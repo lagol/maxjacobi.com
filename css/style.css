@@ -154,8 +154,13 @@ footer a, footer a:visited, footer a:active, footer a:hover {
 	grid-row: 1/2;
 }
 
+.footer-link-7 {
+	grid-column: 7/8;
+	grid-row: 1/2;
+}
+
 footer small {
-	grid-column: 1/7;
+	grid-column: 1/8;
 	grid-row: 2/3;
 }
 
@@ -163,7 +168,24 @@ hr {
 	border: 1px solid #1E6091;
 }
 
-.post {
+#post {
 	width: 100%;
 	height: calc(100vh - 215px);
+	border: none;
+}
+
+.footer-iframe {
+	width: 100vw;
+	border: none;
+}
+
+.nav-iframe {
+	width: 100vw;
+	border: none;
+	height: 50px;
+}
+
+.new-iframe {
+	width: 100%;
+	border: none;
 }
