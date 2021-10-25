@@ -20,7 +20,7 @@ nav.main-nav {
 	grid-template-columns: repeat(10, 10%);
 	align-items: center;
 	justify-items: center;
-	background-color: #1e6091;
+	background: linear-gradient(#16476C,#1e6091,#16476C);
 }
 
 img.main-nav {
@@ -116,7 +116,7 @@ footer {
 	grid-template-columns: repeat(6, 16.66%);
 	align-items: center;
 	justify-items: center;
-	background-color: #1E6091;
+	background: linear-gradient(#16476C,#1e6091,#16476C);
 	color: #dcf3fa;
 }
 
